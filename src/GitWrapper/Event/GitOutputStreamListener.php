@@ -10,7 +10,9 @@ class GitOutputStreamListener implements GitOutputListenerInterface
 {
     public function handleOutput(GitOutputEvent $event)
     {
-        $handler = $event->isError() ? STDERR : STDOUT;
+        // Prefixed with backslashes for HHVM
+        // @see https://github.com/facebook/hhvm/issues/2544#issuecomment-52751506
+        $handler = $event->isError() ? \STDERR : \STDOUT;
         fputs($handler, $event->getBuffer());
     }
 }

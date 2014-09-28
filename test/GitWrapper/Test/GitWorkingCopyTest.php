@@ -398,6 +398,9 @@ PATCH;
         // Capture output written to STDOUT and use echo so we can suppress and
         // capture it using normal output buffering.
         stream_filter_register('suppress', '\GitWrapper\Test\StreamSuppressFilter');
+
+        // Prefixed with backslash for HHVM
+        // @see https://github.com/facebook/hhvm/issues/2544#issuecomment-52751506
         $stdoutSuppress = stream_filter_append(\STDOUT, 'suppress');
 
         $git->getWrapper()->streamOutput(true);

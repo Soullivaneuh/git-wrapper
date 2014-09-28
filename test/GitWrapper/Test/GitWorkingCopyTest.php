@@ -398,7 +398,7 @@ PATCH;
         // Capture output written to STDOUT and use echo so we can suppress and
         // capture it using normal output buffering.
         stream_filter_register('suppress', '\GitWrapper\Test\StreamSuppressFilter');
-        $stdoutSuppress = stream_filter_append(STDOUT, 'suppress');
+        $stdoutSuppress = stream_filter_append(\STDOUT, 'suppress');
 
         $git->getWrapper()->streamOutput(true);
         ob_start();

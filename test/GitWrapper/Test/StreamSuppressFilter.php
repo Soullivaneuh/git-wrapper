@@ -16,6 +16,6 @@ class StreamSuppressFilter extends \php_user_filter {
           $consumed += $bucket->datalen;
           stream_bucket_append($out, $bucket);
       }
-      return PSFS_PASS_ON;
+      return \PSFS_PASS_ON;
   }
 }
